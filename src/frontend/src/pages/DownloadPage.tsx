@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { FadeUp } from "../components/FadeUp";
 
+const LOGO =
+  "/assets/uploads/app_logo_foreground-019d2426-c686-71cf-adab-6b85833910d7-1.png";
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.clearpix.photoenhancer.app";
 const APP_STORE_URL =
@@ -15,6 +17,29 @@ const features = [
   "Fix colors and remove noise",
 ];
 
+const appScreenshots = [
+  {
+    src: "/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png",
+    title: "Easy AI Profile Setup",
+  },
+  {
+    src: "/assets/uploads/image-019d2418-0910-71e1-bfa9-3e8de204494f-2.png",
+    title: "Modeling Shoots & Portraits",
+  },
+  {
+    src: "/assets/uploads/image-019d2418-0950-718a-9630-ab82df232ea6-3.png",
+    title: "AI Magic Filters",
+  },
+  {
+    src: "/assets/uploads/image-019d2418-09cb-73c2-8ee9-cfd64ac9db20-4.png",
+    title: "Enhance Every Photo in A Snap",
+  },
+  {
+    src: "/assets/uploads/image-019d2418-09cb-7229-b192-20ad7171ad55-5.png",
+    title: "Enhance Image Clarity with AI",
+  },
+];
+
 export default function DownloadPage() {
   return (
     <div className="min-h-screen bg-black">
@@ -24,7 +49,7 @@ export default function DownloadPage() {
           <FadeUp>
             <div className="flex items-center justify-center gap-3 mb-8">
               <img
-                src="/assets/uploads/app_logo_foreground-019d23e0-f255-765b-9983-11d350cc5503-1.png"
+                src={LOGO}
                 alt="ClearPix"
                 className="w-16 h-16 rounded-2xl"
               />
@@ -48,6 +73,7 @@ export default function DownloadPage() {
                 whileHover={{ scale: 1.03, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 className="group bg-[#111111] border border-white/10 hover:border-white/25 rounded-3xl p-8 flex flex-col items-center gap-5 transition-colors duration-300 cursor-pointer"
+                data-ocid="download.app_store_button"
               >
                 <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg">
                   <svg
@@ -96,6 +122,7 @@ export default function DownloadPage() {
                 whileHover={{ scale: 1.03, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 className="group bg-[#111111] border border-white/10 hover:border-white/25 rounded-3xl p-8 flex flex-col items-center gap-5 transition-colors duration-300 cursor-pointer"
+                data-ocid="download.play_store_button"
               >
                 <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg">
                   <svg
@@ -154,14 +181,78 @@ export default function DownloadPage() {
             </div>
           </FadeUp>
 
-          {/* Phone preview */}
+          {/* App Screenshots Mosaic */}
           <FadeUp delay={0.2}>
-            <div className="relative rounded-3xl overflow-hidden bg-[#0a0a0a] border border-white/10">
-              <img
-                src="/assets/generated/download-hero-phones.dim_900x600.png"
-                alt="ClearPix app on iOS and Android"
-                className="w-full object-cover"
-              />
+            <div className="relative">
+              <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-6">
+                App Screenshots
+              </p>
+              {/* Large screens: 3+2 mosaic layout */}
+              <div className="hidden md:grid grid-cols-3 gap-4 mb-4">
+                {appScreenshots.slice(0, 3).map((shot, i) => (
+                  <motion.div
+                    key={shot.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className="relative group rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/10 hover:border-white/20 transition-all duration-300"
+                  >
+                    <img
+                      src={shot.src}
+                      alt={shot.title}
+                      className="w-full object-contain"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <span className="text-white text-sm font-semibold">
+                        {shot.title}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="hidden md:grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+                {appScreenshots.slice(3).map((shot, i) => (
+                  <motion.div
+                    key={shot.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: (i + 3) * 0.1, duration: 0.5 }}
+                    className="relative group rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/10 hover:border-white/20 transition-all duration-300"
+                  >
+                    <img
+                      src={shot.src}
+                      alt={shot.title}
+                      className="w-full object-contain"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <span className="text-white text-sm font-semibold">
+                        {shot.title}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Mobile: horizontal scroll */}
+              <div className="md:hidden flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory">
+                {appScreenshots.map((shot) => (
+                  <div
+                    key={shot.title}
+                    className="flex-shrink-0 w-72 snap-start relative rounded-2xl overflow-hidden bg-[#0a0a0a] border border-white/10"
+                  >
+                    <img
+                      src={shot.src}
+                      alt={shot.title}
+                      className="w-full object-contain"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <span className="text-white text-sm font-semibold">
+                        {shot.title}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeUp>
         </div>
@@ -216,6 +307,7 @@ export default function DownloadPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 bg-white hover:bg-gray-100 text-black px-6 py-3.5 rounded-full text-sm font-semibold transition-all duration-200 hover:shadow-lg"
+                data-ocid="download.app_store_cta_button"
               >
                 <svg
                   className="w-5 h-5"
@@ -232,6 +324,7 @@ export default function DownloadPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 bg-[#FF3A5C] hover:bg-[#e02347] text-white px-6 py-3.5 rounded-full text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-[#FF3A5C]/25"
+                data-ocid="download.play_store_cta_button"
               >
                 <svg
                   className="w-5 h-5"

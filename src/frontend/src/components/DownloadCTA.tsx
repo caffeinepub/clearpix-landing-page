@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { FadeUp } from "./FadeUp";
 
+const LOGO =
+  "/assets/uploads/app_logo_foreground-019d2426-c686-71cf-adab-6b85833910d7-1.png";
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.clearpix.photoenhancer.app";
 const APP_STORE_URL =
@@ -20,7 +22,7 @@ export function DownloadCTA() {
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 rounded-2xl overflow-hidden bg-black border border-white/10 shadow-xl">
               <img
-                src="/assets/uploads/app_logo_foreground-019d23e0-f255-765b-9983-11d350cc5503-1.png"
+                src={LOGO}
                 alt="ClearPix"
                 className="w-full h-full object-cover"
               />

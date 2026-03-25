@@ -10,19 +10,22 @@ const steps = [
     num: "01",
     title: "Train the AI",
     desc: "Choose 8-12 images to teach the AI what you look like: this will take just a few minutes. After that, you'll be able to generate countless different photos!",
-    image: `${LOCAL}ai-photos-showcase.dim_800x600.jpg`,
+    image: "/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png",
+    isUpload: true,
   },
   {
     num: "02",
     title: "Pick a style",
     desc: "Want to see yourself in a professional headshot? Need a new photo for your CV? Choose from dozens of styles to generate photos based on your preferences!",
-    image: `${LOCAL}before-after-comparison.dim_800x500.jpg`,
+    image: "/assets/uploads/image-019d2418-0950-718a-9630-ab82df232ea6-3.png",
+    isUpload: true,
   },
   {
     num: "03",
     title: "Generate photos of yourself",
     desc: "Generate dozens of stunning photos of yourself in different poses and angles, as if they were taken by a professional photographer!",
     image: `${LOCAL}app-preview-carousel.dim_900x500.jpg`,
+    isUpload: false,
   },
 ];
 
@@ -99,17 +102,72 @@ export default function AIPhotosPage() {
               Generate stunningly realistic photos of yourself that look like
               they were taken by a professional photographer.
             </p>
-            <img
-              src={`${LOCAL}ai-photos-showcase.dim_800x600.jpg`}
-              alt="ClearPix AI Photos showcase"
-              className="w-full rounded-3xl shadow-2xl"
-            />
+            {/* Hero showcase using real app screenshot */}
+            <div className="rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-2xl">
+              <img
+                src="/assets/uploads/image-019d2418-09cb-73c2-8ee9-cfd64ac9db20-4.png"
+                alt="Enhance Every Snap - ClearPix AI"
+                className="w-full object-contain"
+              />
+            </div>
           </FadeUp>
         </div>
       </section>
 
+      {/* App Feature Showcase - two real screenshots side by side */}
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto">
+          <FadeUp className="text-center mb-12">
+            <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
+              Features
+            </p>
+            <h2 className="font-display font-extrabold text-white text-4xl sm:text-5xl tracking-tight">
+              Powerful AI tools in your pocket
+            </h2>
+          </FadeUp>
+          <div className="grid md:grid-cols-2 gap-8">
+            <FadeUp delay={0.08}>
+              <div className="rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl h-full flex flex-col">
+                <img
+                  src="/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png"
+                  alt="Easy AI Profile Setup"
+                  className="w-full object-contain"
+                />
+                <div className="p-6">
+                  <h3 className="font-display font-bold text-white text-xl mb-2">
+                    Easy AI Profile Setup
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Train the AI on your face with just a handful of selfies and
+                    unlock endless personalized photo styles.
+                  </p>
+                </div>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.16}>
+              <div className="rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl h-full flex flex-col">
+                <img
+                  src="/assets/uploads/image-019d2418-0950-718a-9630-ab82df232ea6-3.png"
+                  alt="AI Magic Filters"
+                  className="w-full object-contain"
+                />
+                <div className="p-6">
+                  <h3 className="font-display font-bold text-white text-xl mb-2">
+                    AI Magic Filters
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Apply stunning AI-powered filters that transform your photos
+                    with professional-grade quality in seconds.
+                  </p>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
           <FadeUp className="text-center mb-14">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
@@ -136,19 +194,27 @@ export default function AIPhotosPage() {
                           {step.desc}
                         </p>
                       </div>
-                      <img
-                        src={step.image}
-                        alt={step.title}
-                        className="w-full rounded-3xl shadow-2xl object-cover"
-                      />
+                      <div
+                        className={`rounded-3xl overflow-hidden shadow-2xl border border-white/10 ${step.isUpload ? "bg-[#0a0a0a]" : ""}`}
+                      >
+                        <img
+                          src={step.image}
+                          alt={step.title}
+                          className={`w-full ${step.isUpload ? "object-contain" : "object-cover"}`}
+                        />
+                      </div>
                     </>
                   ) : (
                     <>
-                      <img
-                        src={step.image}
-                        alt={step.title}
-                        className="w-full rounded-3xl shadow-2xl object-cover"
-                      />
+                      <div
+                        className={`rounded-3xl overflow-hidden shadow-2xl border border-white/10 ${step.isUpload ? "bg-[#0a0a0a]" : ""}`}
+                      >
+                        <img
+                          src={step.image}
+                          alt={step.title}
+                          className={`w-full ${step.isUpload ? "object-contain" : "object-cover"}`}
+                        />
+                      </div>
                       <div>
                         <span className="font-display font-extrabold text-7xl text-white/10 block mb-4">
                           {step.num}
@@ -170,7 +236,7 @@ export default function AIPhotosPage() {
       </section>
 
       {/* Styles */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
           <FadeUp className="text-center mb-12">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
@@ -205,7 +271,7 @@ export default function AIPhotosPage() {
       </section>
 
       {/* Mobile App section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <FadeUp>
             <div>
@@ -223,17 +289,19 @@ export default function AIPhotosPage() {
             </div>
           </FadeUp>
           <FadeUp delay={0.15}>
-            <img
-              src={`${LOCAL}app-preview-carousel.dim_900x500.jpg`}
-              alt="ClearPix mobile app"
-              className="w-full rounded-3xl shadow-2xl"
-            />
+            <div className="rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-2xl">
+              <img
+                src="/assets/uploads/image-019d2418-0910-71e1-bfa9-3e8de204494f-2.png"
+                alt="Modeling Shoots & Portraits - ClearPix mobile app"
+                className="w-full object-contain"
+              />
+            </div>
           </FadeUp>
         </div>
       </section>
 
       {/* Use Cases */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
           <FadeUp className="text-center mb-12">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">

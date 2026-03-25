@@ -3,6 +3,9 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
+const LOGO =
+  "/assets/uploads/app_logo_foreground-019d2426-c686-71cf-adab-6b85833910d7-1.png";
+
 const enhanceLinks = [
   { label: "Unblur & Sharpener", to: "/unblur-sharpener" },
   { label: "Denoiser", to: "/denoiser" },
@@ -60,7 +63,7 @@ export function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2" data-ocid="nav.link">
           <img
-            src="/assets/uploads/app_logo_foreground-019d23e0-f255-765b-9983-11d350cc5503-1.png"
+            src={LOGO}
             alt="ClearPix Logo"
             className="w-9 h-9 rounded-lg object-cover"
           />

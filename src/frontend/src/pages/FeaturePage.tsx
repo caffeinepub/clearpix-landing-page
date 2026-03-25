@@ -133,7 +133,7 @@ export function FeaturePage({
         </div>
       </section>
 
-      {/* Used by millions mini */}
+      {/* Used by users mini */}
       <section className="py-16 px-4 bg-black">
         <div className="max-w-3xl mx-auto text-center">
           <FadeUp>
@@ -149,7 +149,7 @@ export function FeaturePage({
               ))}
             </div>
             <p className="font-display font-extrabold text-white text-4xl sm:text-5xl tracking-tight">
-              100M+ happy users worldwide
+              20K+ happy users worldwide
             </p>
           </FadeUp>
         </div>

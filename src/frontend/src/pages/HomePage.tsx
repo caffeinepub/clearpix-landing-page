@@ -10,19 +10,24 @@ import { ReviewsSection } from "../components/ReviewsSection";
 import { Toggle } from "../components/Toggle";
 import { WavyUnderline } from "../components/WavyUnderline";
 
-// Using locally generated original images (copyright-safe)
+const BASE = "https://remini.ai";
+const PRISMIC = `${BASE}/images/prismic`;
+
 const IMAGES = {
   portrait: {
-    before: "/assets/generated/portrait-before.dim_600x400.jpg",
-    after: "/assets/generated/portrait-after.dim_600x400.jpg",
+    before: `${BASE}/images/product-demo/portrait/before.webp`,
+    after: `${BASE}/images/product-demo/portrait/after.webp`,
+    thumb: `${BASE}/images/product-demo/portrait/thumb.webp`,
   },
   landscape: {
-    before: "/assets/generated/landscape-before.dim_600x400.jpg",
-    after: "/assets/generated/landscape-after.dim_600x400.jpg",
+    before: `${BASE}/images/product-demo/landscape/before.webp`,
+    after: `${BASE}/images/product-demo/landscape/after.webp`,
+    thumb: `${BASE}/images/product-demo/landscape/thumb.webp`,
   },
   oldphoto: {
-    before: "/assets/generated/oldphoto-before.dim_600x400.jpg",
-    after: "/assets/generated/oldphoto-after.dim_600x400.jpg",
+    before: `${BASE}/images/product-demo/old-photo/before.webp`,
+    after: `${BASE}/images/product-demo/old-photo/after.webp`,
+    thumb: `${BASE}/images/product-demo/old-photo/thumb.webp`,
   },
 };
 
@@ -36,10 +41,40 @@ const heroTabs: { key: TabKey; label: string }[] = [
 
 const heroFeatures = [
   { id: "face", label: "Face Enhance", desc: "Restore facial details" },
-  { id: "glow", label: "Face Glow", desc: "Natural skin glow" },
   { id: "color", label: "Auto Color", desc: "Perfect color balance" },
+  { id: "glow", label: "Face Glow", desc: "Natural skin glow" },
   { id: "bg", label: "Background Enhance", desc: "Crisp backgrounds" },
 ];
+
+function getAfterImage(
+  tab: TabKey,
+  enabledFeatures: Record<string, boolean>,
+): string {
+  const on = Object.entries(enabledFeatures)
+    .filter(([, v]) => v)
+    .map(([k]) => k);
+
+  if (on.length === 0) {
+    return IMAGES[tab].before;
+  }
+
+  if (tab === "portrait") {
+    if (on.length === 1 && on[0] === "face") {
+      return `${PRISMIC}/usecase-face-enhancer-after.webp`;
+    }
+    if (on.length === 1 && on[0] === "color") {
+      return `${PRISMIC}/usecase-color-fixer-after.webp`;
+    }
+  }
+
+  if (tab === "landscape") {
+    if (on.length === 1 && on[0] === "color") {
+      return `${PRISMIC}/usecase-color-fixer-after.webp`;
+    }
+  }
+
+  return IMAGES[tab].after;
+}
 
 const industries = [
   {
@@ -79,43 +114,43 @@ const solutions = [
     title: "Unblur & Sharpener",
     desc: "Fix blurry photos instantly in a single tap.",
     to: "/unblur-sharpener",
-    imageBefore: "/assets/generated/unblur-before.dim_400x300.jpg",
-    imageAfter: "/assets/generated/unblur-after.dim_400x300.jpg",
+    imageBefore: `${PRISMIC}/usecase-unblur-before.webp`,
+    imageAfter: `${PRISMIC}/usecase-unblur-after.webp`,
   },
   {
     title: "Old Photo Restorer",
     desc: "Breathe new life into faded, scratched vintage photos.",
     to: "/photo-restorer",
-    imageBefore: "/assets/generated/oldphoto-before.dim_600x400.jpg",
-    imageAfter: "/assets/generated/oldphoto-after.dim_600x400.jpg",
+    imageBefore: `${PRISMIC}/usecase-photo-restorer-before.webp`,
+    imageAfter: `${PRISMIC}/usecase-photo-restorer-after.webp`,
   },
   {
     title: "Denoiser",
     desc: "Remove noise and grain for studio-clean results.",
     to: "/denoiser",
-    imageBefore: "/assets/generated/denoiser-before.dim_400x300.jpg",
-    imageAfter: "/assets/generated/denoiser-after.dim_400x300.jpg",
+    imageBefore: `${PRISMIC}/usecase-denoiser-before.webp`,
+    imageAfter: `${PRISMIC}/usecase-denoiser-after.webp`,
   },
   {
     title: "Face Enhancer",
     desc: "Sharpen facial features and restore natural skin textures.",
     to: "/face-enhancer",
-    imageBefore: "/assets/generated/face-before.dim_400x300.jpg",
-    imageAfter: "/assets/generated/face-after.dim_400x300.jpg",
+    imageBefore: `${PRISMIC}/usecase-face-enhancer-before.webp`,
+    imageAfter: `${PRISMIC}/usecase-face-enhancer-after.webp`,
   },
   {
     title: "Color Fixer",
     desc: "Restore vivid, accurate colors in any photo.",
     to: "/color-fixer",
-    imageBefore: "/assets/generated/color-before.dim_400x300.jpg",
-    imageAfter: "/assets/generated/color-after.dim_400x300.jpg",
+    imageBefore: `${PRISMIC}/usecase-color-fixer-before.webp`,
+    imageAfter: `${PRISMIC}/usecase-color-fixer-after.webp`,
   },
   {
     title: "Image Enlarger",
     desc: "Upscale your images up to 8× without losing quality.",
     to: "/image-enlarger",
-    imageBefore: "/assets/generated/portrait-before.dim_600x400.jpg",
-    imageAfter: "/assets/generated/portrait-after.dim_600x400.jpg",
+    imageBefore: `${PRISMIC}/usecase-image-enlarger-before.webp`,
+    imageAfter: `${PRISMIC}/usecase-image-enlarger-after.webp`,
   },
 ];
 
@@ -140,6 +175,8 @@ export default function HomePage() {
     setEnabledFeatures((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const computedAfter = getAfterImage(activeTab, enabledFeatures);
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero */}
@@ -163,20 +200,28 @@ export default function HomePage() {
 
             {/* Right */}
             <FadeUp delay={0.15}>
-              {/* Tabs */}
+              {/* Tabs with thumbnails */}
               <div className="flex gap-2 mb-4">
                 {heroTabs.map((t) => (
                   <button
                     type="button"
                     key={t.key}
                     onClick={() => setActiveTab(t.key)}
-                    className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                       activeTab === t.key
                         ? "bg-[#FF3A5C] text-white shadow-md"
                         : "bg-white/10 text-gray-300 hover:bg-white/20"
                     }`}
                     data-ocid="hero.tab"
                   >
+                    <img
+                      src={IMAGES[t.key].thumb}
+                      alt={t.label}
+                      className="w-5 h-5 rounded-sm object-cover flex-shrink-0"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = "none";
+                      }}
+                    />
                     {t.label}
                   </button>
                 ))}
@@ -184,7 +229,7 @@ export default function HomePage() {
 
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeTab}
+                  key={activeTab + computedAfter}
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}
@@ -193,32 +238,40 @@ export default function HomePage() {
                   <div className="bg-[#111111] rounded-2xl p-4 shadow-2xl border border-white/10">
                     <BeforeAfterSlider
                       imageBefore={IMAGES[activeTab].before}
-                      imageAfter={IMAGES[activeTab].after}
+                      imageAfter={computedAfter}
                       label={activeTab}
                     />
                   </div>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Feature toggles */}
               <div className="grid grid-cols-2 gap-3 mt-4">
-                {heroFeatures.map((f) => (
-                  <div
-                    key={f.id}
-                    className="flex items-center justify-between bg-[#111111] border border-white/10 rounded-xl p-3"
-                  >
-                    <div className="flex-1 min-w-0 mr-3">
-                      <p className="text-sm font-semibold text-white truncate">
-                        {f.label}
-                      </p>
-                      <p className="text-xs text-gray-500 truncate">{f.desc}</p>
+                {heroFeatures.map((f) => {
+                  const isDisabled = f.id === "bg" && activeTab === "portrait";
+                  return (
+                    <div
+                      key={f.id}
+                      className={`flex items-center justify-between bg-[#111111] border border-white/10 rounded-xl p-3 ${
+                        isDisabled ? "opacity-40" : ""
+                      }`}
+                    >
+                      <div className="flex-1 min-w-0 mr-3">
+                        <p className="text-sm font-semibold text-white truncate">
+                          {f.label}
+                        </p>
+                        <p className="text-xs text-gray-500 truncate">
+                          {f.desc}
+                        </p>
+                      </div>
+                      <Toggle
+                        enabled={
+                          isDisabled ? false : (enabledFeatures[f.id] ?? false)
+                        }
+                        onChange={() => !isDisabled && toggleFeature(f.id)}
+                      />
                     </div>
-                    <Toggle
-                      enabled={enabledFeatures[f.id] ?? false}
-                      onChange={() => toggleFeature(f.id)}
-                    />
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               <p className="text-xs text-gray-600 mt-3">
                 All the enhancements shown in the website are{" "}
@@ -268,11 +321,17 @@ export default function HomePage() {
               </Link>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <img
-                src="/assets/generated/ai-photos-showcase.dim_800x600.jpg"
-                alt="AI Photos showcase by ClearPix"
-                className="w-full rounded-3xl shadow-2xl object-cover"
-              />
+              <div className="rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-2xl">
+                <img
+                  src={`${PRISMIC}/homepage-ai-photos.webp`}
+                  alt="AI Photos - ClearPix"
+                  className="w-full object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png";
+                  }}
+                />
+              </div>
             </FadeUp>
           </div>
         </div>
@@ -313,11 +372,17 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeUp>
-              <img
-                src="/assets/generated/video-enhancer-showcase.dim_800x600.jpg"
-                alt="Video enhancer showcase by ClearPix"
-                className="w-full rounded-3xl shadow-2xl object-cover"
-              />
+              <div className="rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-2xl">
+                <img
+                  src={`${PRISMIC}/homepage-video-enhancer.webp`}
+                  alt="Video Enhancer - ClearPix"
+                  className="w-full object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      "/assets/uploads/image-019d2418-09cb-7229-b192-20ad7171ad55-5.png";
+                  }}
+                />
+              </div>
             </FadeUp>
             <FadeUp delay={0.15}>
               <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
@@ -430,7 +495,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ClearPix Testimonial - branded */}
+      {/* ClearPix Testimonial */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-5xl mx-auto">
           <FadeUp>
@@ -439,7 +504,7 @@ export default function HomePage() {
               <div className="relative p-8 sm:p-12">
                 <div className="flex items-center gap-3 mb-6">
                   <img
-                    src="/assets/uploads/app_logo_foreground-019d23e0-f255-765b-9983-11d350cc5503-1.png"
+                    src="/assets/uploads/app_logo_foreground-019d2426-c686-71cf-adab-6b85833910d7-1.png"
                     alt="ClearPix"
                     className="w-10 h-10 rounded-xl"
                   />
