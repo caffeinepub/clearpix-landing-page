@@ -1,7 +1,7 @@
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.clearpix.photoenhancer.app";
 const APP_STORE_URL =
-  "https://apps.apple.com/app/clearpix-ai-photo-enhancer/id123456789";
+  "https://apps.apple.com/us/app/clearpix-ai-photo-enhancer/id6755960455";
 
 export function DownloadButtons({
   variant = "dark",

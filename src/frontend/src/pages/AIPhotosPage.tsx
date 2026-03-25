@@ -3,80 +3,80 @@ import { DownloadCTA } from "../components/DownloadCTA";
 import { FadeUp } from "../components/FadeUp";
 import { ReviewsSection } from "../components/ReviewsSection";
 
-const B = "https://remini.ai/images/prismic/";
+const LOCAL = "/assets/generated/";
 
 const steps = [
   {
     num: "01",
     title: "Train the AI",
-    desc: "Choose 8-12 images to teach the AI what you look like: this will take just few minutes. After that, you'll be able to generate countless different photos!",
-    image: `${B}ai-photos-train-ai.webp`,
+    desc: "Choose 8-12 images to teach the AI what you look like: this will take just a few minutes. After that, you'll be able to generate countless different photos!",
+    image: `${LOCAL}ai-photos-showcase.dim_800x600.jpg`,
   },
   {
     num: "02",
-    title: "Pick a model image",
-    desc: "Want to see yourself as a baby? Need a new photo for your CV? Choose from dozens of model images to generate photos based on its style and pose!",
-    image: `${B}ai-photos-pick-a-model.webp`,
+    title: "Pick a style",
+    desc: "Want to see yourself in a professional headshot? Need a new photo for your CV? Choose from dozens of styles to generate photos based on your preferences!",
+    image: `${LOCAL}before-after-comparison.dim_800x500.jpg`,
   },
   {
     num: "03",
     title: "Generate photos of yourself",
     desc: "Generate dozens of stunning photos of yourself in different poses and angles, as if they were taken by a professional photographer!",
-    image: `${B}ai-photos-generate.webp`,
+    image: `${LOCAL}app-preview-carousel.dim_900x500.jpg`,
   },
 ];
 
 const photoStyles = [
   {
-    label: "Curriculum",
-    image: `${B}ai-photos-curriculum.webp`,
+    label: "Professional",
+    image: `${LOCAL}portrait-after.dim_600x400.jpg`,
     desc: "Our AI effortlessly tailors the photo to match your career aspirations.",
   },
   {
-    label: "Baby me",
-    image: `${B}ai-photos-baby-me.webp`,
-    desc: "Curious about how you looked as an adorable baby?",
+    label: "Vintage",
+    image: `${LOCAL}oldphoto-after.dim_600x400.jpg`,
+    desc: "Explore nostalgic styles with beautiful vintage aesthetics.",
   },
   {
-    label: "Maternity",
-    image: `${B}ai-photos-maternity.webp`,
-    desc: "Get heartfelt photos that capture the love and anticipation of motherhood.",
+    label: "Artistic",
+    image: `${LOCAL}color-after.dim_400x300.jpg`,
+    desc: "Vibrant artistic styles that make your photos truly unique.",
   },
   {
-    label: "Photo shooting",
-    image: `${B}ai-photos-photoshoot.webp`,
-    desc: "Choose a model image that reflects the pose you want to achieve.",
+    label: "Portrait",
+    image: `${LOCAL}face-after.dim_400x300.jpg`,
+    desc: "Choose a pose that reflects the look you want to achieve.",
   },
 ];
 
 const useCases = [
   {
-    icon: `${B}icon-eyes.webp`,
+    icon: "👤",
     title: "Profile pictures",
     desc: "Generate picture-perfect photos that highlight your individuality.",
   },
   {
-    icon: `${B}icon-smartphone.png`,
+    icon: "📱",
     title: "Social media",
     desc: "Get more likes and followers with unique and captivating AI photos.",
   },
   {
-    icon: `${B}icon-suitcase.webp`,
+    icon: "💼",
     title: "Curriculum Vitae",
     desc: "Make your CV stand out with an eye-catching professional photo.",
   },
   {
-    icon: `${B}icon-haircut.webp`,
+    icon: "✨",
     title: "New looks",
     desc: "See exactly how you'd look with different hair, makeup, and outfits.",
   },
   {
-    icon: `${B}icon-camera.webp`,
+    icon: "📸",
     title: "Professional photos",
     desc: "Create a diverse modeling portfolio without a professional shooting.",
   },
   {
-    icon: `${B}icon-globe.webp`,
+    icon: "🌍",
     title: "Different locations",
     desc: "Capture breathtaking photos of yourself in any location worldwide.",
   },
@@ -86,7 +86,7 @@ export default function AIPhotosPage() {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero */}
-      <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="pt-28 pb-14 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-4xl mx-auto text-center">
           <FadeUp>
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
@@ -100,18 +100,18 @@ export default function AIPhotosPage() {
               they were taken by a professional photographer.
             </p>
             <img
-              src={`${B}ai-photos-hero-desktop.webp`}
-              alt="AI Photos hero"
+              src={`${LOCAL}ai-photos-showcase.dim_800x600.jpg`}
+              alt="ClearPix AI Photos showcase"
               className="w-full rounded-3xl shadow-2xl"
             />
           </FadeUp>
         </div>
       </section>
 
-      {/* How It Works — 3 steps */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+      {/* How It Works */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="text-center mb-16">
+          <FadeUp className="text-center mb-14">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
               How It Works
             </p>
@@ -119,14 +119,10 @@ export default function AIPhotosPage() {
               Three easy steps to your AI photos
             </h2>
           </FadeUp>
-          <div className="space-y-24">
+          <div className="space-y-16">
             {steps.map((step, i) => (
               <FadeUp key={step.num}>
-                <div
-                  className={`grid lg:grid-cols-2 gap-16 items-center ${
-                    i % 2 !== 0 ? "" : ""
-                  }`}
-                >
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
                   {i % 2 === 0 ? (
                     <>
                       <div>
@@ -173,10 +169,10 @@ export default function AIPhotosPage() {
         </div>
       </section>
 
-      {/* Best version of yourself */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+      {/* Styles */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="text-center mb-16">
+          <FadeUp className="text-center mb-12">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
               Styles
             </p>
@@ -209,7 +205,7 @@ export default function AIPhotosPage() {
       </section>
 
       {/* Mobile App section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <FadeUp>
             <div>
@@ -228,8 +224,8 @@ export default function AIPhotosPage() {
           </FadeUp>
           <FadeUp delay={0.15}>
             <img
-              src={`${B}ai-photos-mobileapp-desktop.webp`}
-              alt="Mobile app"
+              src={`${LOCAL}app-preview-carousel.dim_900x500.jpg`}
+              alt="ClearPix mobile app"
               className="w-full rounded-3xl shadow-2xl"
             />
           </FadeUp>
@@ -237,9 +233,9 @@ export default function AIPhotosPage() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="text-center mb-16">
+          <FadeUp className="text-center mb-12">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
               Use Cases
             </p>
@@ -251,12 +247,8 @@ export default function AIPhotosPage() {
             {useCases.map((uc, i) => (
               <FadeUp key={uc.title} delay={i * 0.07}>
                 <div className="p-6 bg-[#111111] rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-12 h-12 rounded-xl bg-[#FF3A5C]/10 flex items-center justify-center mb-4">
-                    <img
-                      src={uc.icon}
-                      alt={uc.title}
-                      className="w-7 h-7 object-contain"
-                    />
+                  <div className="w-12 h-12 rounded-xl bg-[#FF3A5C]/10 flex items-center justify-center mb-4 text-2xl">
+                    {uc.icon}
                   </div>
                   <h3 className="font-semibold text-white mb-2">{uc.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">

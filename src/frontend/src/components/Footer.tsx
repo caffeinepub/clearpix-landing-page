@@ -22,9 +22,9 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/assets/generated/clearpix-icon-transparent.dim_120x120.png"
-                alt="ClearPix"
-                className="w-8 h-8"
+                src="/assets/uploads/app_logo_foreground-019d23e0-f255-765b-9983-11d350cc5503-1.png"
+                alt="ClearPix Logo"
+                className="w-9 h-9 rounded-lg object-cover"
               />
               <span className="font-display font-bold text-white text-lg">
                 ClearPix

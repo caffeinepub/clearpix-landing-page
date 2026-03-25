@@ -60,9 +60,9 @@ export function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2" data-ocid="nav.link">
           <img
-            src="/assets/generated/clearpix-icon-transparent.dim_120x120.png"
-            alt="ClearPix"
-            className="w-8 h-8"
+            src="/assets/uploads/app_logo_foreground-019d23e0-f255-765b-9983-11d350cc5503-1.png"
+            alt="ClearPix Logo"
+            className="w-9 h-9 rounded-lg object-cover"
           />
           <span className="font-display font-bold text-white text-lg tracking-tight">
             ClearPix
@@ -136,15 +136,13 @@ export function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex">
-          <a
-            href="https://play.google.com/store/apps/details?id=com.clearpix.photoenhancer.app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/download"
             className="inline-flex items-center gap-2 bg-[#FF3A5C] hover:bg-[#e02347] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-[#FF3A5C]/25"
             data-ocid="nav.primary_button"
           >
             Download App
-          </a>
+          </Link>
         </div>
 
         {/* Hamburger */}
@@ -221,15 +219,13 @@ export function Navbar() {
               >
                 Support
               </a>
-              <a
-                href="https://play.google.com/store/apps/details?id=com.clearpix.photoenhancer.app"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/download"
                 className="flex items-center justify-center gap-2 bg-[#FF3A5C] text-white text-sm font-semibold px-5 py-3 rounded-full w-full mt-3"
                 data-ocid="nav.primary_button"
               >
                 Download App
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

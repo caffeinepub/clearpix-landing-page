@@ -10,20 +10,19 @@ import { ReviewsSection } from "../components/ReviewsSection";
 import { Toggle } from "../components/Toggle";
 import { WavyUnderline } from "../components/WavyUnderline";
 
-const B = "https://remini.ai/images/prismic/";
-
+// Using locally generated original images (copyright-safe)
 const IMAGES = {
   portrait: {
-    before: `${B}usecase-face-enhancer-before.webp`,
-    after: `${B}usecase-face-enhancer-after.webp`,
+    before: "/assets/generated/portrait-before.dim_600x400.jpg",
+    after: "/assets/generated/portrait-after.dim_600x400.jpg",
   },
   landscape: {
-    before: `${B}usecase-image-enlarger-before.webp`,
-    after: `${B}usecase-image-enlarger-after.webp`,
+    before: "/assets/generated/landscape-before.dim_600x400.jpg",
+    after: "/assets/generated/landscape-after.dim_600x400.jpg",
   },
   oldphoto: {
-    before: `${B}usecase-photo-restorer-before.webp`,
-    after: `${B}usecase-photo-restorer-after.webp`,
+    before: "/assets/generated/oldphoto-before.dim_600x400.jpg",
+    after: "/assets/generated/oldphoto-after.dim_600x400.jpg",
   },
 };
 
@@ -44,32 +43,32 @@ const heroFeatures = [
 
 const industries = [
   {
-    icon: `${B}icon-smartphone.png`,
+    icon: "📱",
     title: "Social Platform",
     desc: "Professional-grade content for your audience.",
   },
   {
-    icon: `${B}icon-old-lady.png`,
+    icon: "🖼️",
     title: "Heritage",
     desc: "Restore family history in crystal-clear detail.",
   },
   {
-    icon: `${B}icon-paint.png`,
+    icon: "🖨️",
     title: "Printing Services",
     desc: "Upscale for large-format high-quality prints.",
   },
   {
-    icon: `${B}icon-shopping-bag.png`,
+    icon: "🛍️",
     title: "E-commerce",
     desc: "Enhance product images and boost conversions.",
   },
   {
-    icon: `${B}icon-books.png`,
+    icon: "📚",
     title: "Education",
     desc: "Create engaging, high-resolution learning materials.",
   },
   {
-    icon: `${B}icon-sunset.png`,
+    icon: "📰",
     title: "Magazines",
     desc: "Publication-grade quality for every spread.",
   },
@@ -80,50 +79,50 @@ const solutions = [
     title: "Unblur & Sharpener",
     desc: "Fix blurry photos instantly in a single tap.",
     to: "/unblur-sharpener",
-    imageBefore: `${B}usecase-unblur-before.webp`,
-    imageAfter: `${B}usecase-unblur-after.webp`,
+    imageBefore: "/assets/generated/unblur-before.dim_400x300.jpg",
+    imageAfter: "/assets/generated/unblur-after.dim_400x300.jpg",
   },
   {
     title: "Old Photo Restorer",
     desc: "Breathe new life into faded, scratched vintage photos.",
     to: "/photo-restorer",
-    imageBefore: `${B}usecase-photo-restorer-before.webp`,
-    imageAfter: `${B}usecase-photo-restorer-after.webp`,
+    imageBefore: "/assets/generated/oldphoto-before.dim_600x400.jpg",
+    imageAfter: "/assets/generated/oldphoto-after.dim_600x400.jpg",
   },
   {
     title: "Denoiser",
     desc: "Remove noise and grain for studio-clean results.",
     to: "/denoiser",
-    imageBefore: `${B}usecase-denoiser-before.webp`,
-    imageAfter: `${B}usecase-denoiser-after.webp`,
+    imageBefore: "/assets/generated/denoiser-before.dim_400x300.jpg",
+    imageAfter: "/assets/generated/denoiser-after.dim_400x300.jpg",
   },
   {
     title: "Face Enhancer",
     desc: "Sharpen facial features and restore natural skin textures.",
     to: "/face-enhancer",
-    imageBefore: `${B}usecase-face-enhancer-before.webp`,
-    imageAfter: `${B}usecase-face-enhancer-after.webp`,
+    imageBefore: "/assets/generated/face-before.dim_400x300.jpg",
+    imageAfter: "/assets/generated/face-after.dim_400x300.jpg",
   },
   {
     title: "Color Fixer",
     desc: "Restore vivid, accurate colors in any photo.",
     to: "/color-fixer",
-    imageBefore: `${B}usecase-color-fixer-before.webp`,
-    imageAfter: `${B}usecase-color-fixer-after.webp`,
+    imageBefore: "/assets/generated/color-before.dim_400x300.jpg",
+    imageAfter: "/assets/generated/color-after.dim_400x300.jpg",
   },
   {
     title: "Image Enlarger",
     desc: "Upscale your images up to 8× without losing quality.",
     to: "/image-enlarger",
-    imageBefore: `${B}usecase-image-enlarger-before.webp`,
-    imageAfter: `${B}usecase-image-enlarger-after.webp`,
+    imageBefore: "/assets/generated/portrait-before.dim_600x400.jpg",
+    imageAfter: "/assets/generated/portrait-after.dim_600x400.jpg",
   },
 ];
 
 const stats = [
-  { value: "100M", label: "Monthly Active Users" },
-  { value: "15M", label: "Monthly Downloads" },
-  { value: "5B", label: "Enhanced Photos & Videos" },
+  { value: "20K+", label: "Happy Users" },
+  { value: "100K+", label: "Photos Enhanced" },
+  { value: "4.8★", label: "App Store Rating" },
 ];
 
 export default function HomePage() {
@@ -144,7 +143,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-black">
       {/* Hero */}
-      <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+      <section className="pt-28 pb-14 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             {/* Left */}
@@ -231,7 +230,7 @@ export default function HomePage() {
       </section>
 
       {/* AI Photos split */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeUp>
@@ -270,8 +269,8 @@ export default function HomePage() {
             </FadeUp>
             <FadeUp delay={0.15}>
               <img
-                src={`${B}homepage-ai-photos.webp`}
-                alt="AI Photos showcase"
+                src="/assets/generated/ai-photos-showcase.dim_800x600.jpg"
+                alt="AI Photos showcase by ClearPix"
                 className="w-full rounded-3xl shadow-2xl object-cover"
               />
             </FadeUp>
@@ -280,9 +279,9 @@ export default function HomePage() {
       </section>
 
       {/* Industries */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="text-center mb-16">
+          <FadeUp className="text-center mb-12">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
               Industries
             </p>
@@ -295,12 +294,8 @@ export default function HomePage() {
             {industries.map((ind, i) => (
               <FadeUp key={ind.title} delay={i * 0.06}>
                 <div className="p-6 bg-[#111111] rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-10 h-10 bg-[#FF3A5C]/10 rounded-lg flex items-center justify-center mb-4">
-                    <img
-                      src={ind.icon}
-                      alt={ind.title}
-                      className="w-6 h-6 object-contain"
-                    />
+                  <div className="w-10 h-10 bg-[#FF3A5C]/10 rounded-lg flex items-center justify-center mb-4 text-2xl">
+                    {ind.icon}
                   </div>
                   <h3 className="font-semibold text-white mb-2">{ind.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
@@ -314,13 +309,13 @@ export default function HomePage() {
       </section>
 
       {/* Video Enhancer split */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeUp>
               <img
-                src={`${B}homepage-video-enhancer.webp`}
-                alt="Video enhancer showcase"
+                src="/assets/generated/video-enhancer-showcase.dim_800x600.jpg"
+                alt="Video enhancer showcase by ClearPix"
                 className="w-full rounded-3xl shadow-2xl object-cover"
               />
             </FadeUp>
@@ -363,9 +358,9 @@ export default function HomePage() {
       </section>
 
       {/* Solutions */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
-          <FadeUp className="text-center mb-16">
+          <FadeUp className="text-center mb-12">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
               Our Solutions
             </p>
@@ -409,14 +404,14 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
         <div className="max-w-5xl mx-auto">
-          <FadeUp className="text-center mb-16">
+          <FadeUp className="text-center mb-12">
             <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
               Our Users
             </p>
             <h2 className="font-display font-extrabold text-white text-4xl sm:text-5xl tracking-tight">
-              Used by millions
+              Loved by 20,000+ users
             </h2>
           </FadeUp>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
@@ -435,35 +430,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PiXimperfect Testimonial */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+      {/* ClearPix Testimonial - branded */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-5xl mx-auto">
           <FadeUp>
-            <div className="relative rounded-3xl overflow-hidden">
-              <img
-                src={`${B}PiXimperfect.png`}
-                alt="PiXimperfect"
-                className="w-full h-[400px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 sm:p-12">
-                <img
-                  src={`${B}PiXimperfect-logo.png`}
-                  alt="PiXimperfect Logo"
-                  className="h-10 object-contain mb-6 self-start"
-                />
-                <blockquote className="text-white font-display font-bold text-xl sm:text-2xl lg:text-3xl leading-snug max-w-3xl mb-4">
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a0a0e] to-[#0d0d0d] border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FF3A5C]/10 to-transparent pointer-events-none" />
+              <div className="relative p-8 sm:p-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <img
+                    src="/assets/uploads/app_logo_foreground-019d23e0-f255-765b-9983-11d350cc5503-1.png"
+                    alt="ClearPix"
+                    className="w-10 h-10 rounded-xl"
+                  />
+                  <span className="font-display font-bold text-white text-lg">
+                    ClearPix
+                  </span>
+                </div>
+                <blockquote className="text-white font-display font-bold text-xl sm:text-2xl lg:text-3xl leading-snug max-w-3xl mb-6">
                   &quot;Look at the before and after. If this doesn&apos;t blow
-                  your mind, I don&apos;t know what will! This is absolute
+                  your mind, I don&apos;t know what will! ClearPix is absolute
                   magic!&quot;
                 </blockquote>
-                <a
-                  href="https://www.youtube.com/watch?v=Q8HFN4y1WVw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 text-sm font-semibold hover:text-white transition-colors"
-                >
-                  @PiXimperfect — Unmesh Dinda
-                </a>
+                <div className="flex items-center gap-3">
+                  <div className="flex">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <svg
+                        key={n}
+                        className="w-5 h-5 fill-[#FF3A5C] text-[#FF3A5C]"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-gray-400 text-sm font-medium">
+                    ClearPix User &mdash; Verified Review
+                  </span>
+                </div>
               </div>
             </div>
           </FadeUp>
