@@ -10,71 +10,88 @@ import { ReviewsSection } from "../components/ReviewsSection";
 import { Toggle } from "../components/Toggle";
 import { WavyUnderline } from "../components/WavyUnderline";
 
-const BASE = "https://remini.ai";
-const PRISMIC = `${BASE}/images/prismic`;
+const CDN = "https://remini.ai/images/product-demo";
 
-const IMAGES = {
+type TabKey = "portrait" | "landscape" | "old-photo";
+
+type Features = {
+  face: boolean;
+  glow: boolean;
+  color: boolean;
+  background: boolean;
+};
+
+const ALL_FALSE: Features = {
+  face: false,
+  glow: false,
+  color: false,
+  background: false,
+};
+
+const TAB_CONFIG: Record<
+  TabKey,
+  {
+    label: string;
+    thumb: string;
+    features: (keyof Features)[];
+    buildUrl: (f: Features) => string;
+    disabled: (keyof Features)[];
+  }
+> = {
   portrait: {
-    before: `${BASE}/images/product-demo/portrait/before.webp`,
-    after: `${BASE}/images/product-demo/portrait/after.webp`,
-    thumb: `${BASE}/images/product-demo/portrait/thumb.webp`,
+    label: "Portrait",
+    thumb: `${CDN}/portrait/thumb.webp`,
+    features: ["face", "glow", "color"],
+    disabled: ["background"],
+    buildUrl: (f) =>
+      `${CDN}/portrait/face=${f.face}-glow=${f.glow}-color=${f.color}.webp`,
   },
   landscape: {
-    before: `${BASE}/images/product-demo/landscape/before.webp`,
-    after: `${BASE}/images/product-demo/landscape/after.webp`,
-    thumb: `${BASE}/images/product-demo/landscape/thumb.webp`,
+    label: "Landscape",
+    thumb: `${CDN}/landscape/thumb.webp`,
+    features: ["background", "color"],
+    disabled: ["face", "glow"],
+    buildUrl: (f) =>
+      `${CDN}/landscape/background=${f.background}-color=${f.color}.webp`,
   },
-  oldphoto: {
-    before: `${BASE}/images/product-demo/old-photo/before.webp`,
-    after: `${BASE}/images/product-demo/old-photo/after.webp`,
-    thumb: `${BASE}/images/product-demo/old-photo/thumb.webp`,
+  "old-photo": {
+    label: "Old Photo",
+    thumb: `${CDN}/old-photo/thumb.webp`,
+    features: ["face", "glow", "background"],
+    disabled: ["color"],
+    buildUrl: (f) =>
+      `${CDN}/old-photo/face=${f.face}-glow=${f.glow}-background=${f.background}.webp`,
   },
 };
 
-type TabKey = keyof typeof IMAGES;
+function getDefaultEnabled(tab: TabKey): Features {
+  const result: Features = { ...ALL_FALSE };
+  for (const feat of TAB_CONFIG[tab].features) {
+    result[feat] = true;
+  }
+  return result;
+}
+
+const heroFeatures: { id: keyof Features; label: string; desc: string }[] = [
+  { id: "face", label: "Face Enhance", desc: "Increase quality of faces" },
+  { id: "glow", label: "Face Glow", desc: "Give people a new look and feel" },
+  {
+    id: "color",
+    label: "Auto Color",
+    desc: "Adjust and improve colors and tones",
+  },
+  {
+    id: "background",
+    label: "Background Enhance",
+    desc: "Increase the quality of every detail",
+  },
+];
 
 const heroTabs: { key: TabKey; label: string }[] = [
   { key: "portrait", label: "Portrait" },
   { key: "landscape", label: "Landscape" },
-  { key: "oldphoto", label: "Old Photo" },
+  { key: "old-photo", label: "Old Photo" },
 ];
-
-const heroFeatures = [
-  { id: "face", label: "Face Enhance", desc: "Restore facial details" },
-  { id: "color", label: "Auto Color", desc: "Perfect color balance" },
-  { id: "glow", label: "Face Glow", desc: "Natural skin glow" },
-  { id: "bg", label: "Background Enhance", desc: "Crisp backgrounds" },
-];
-
-function getAfterImage(
-  tab: TabKey,
-  enabledFeatures: Record<string, boolean>,
-): string {
-  const on = Object.entries(enabledFeatures)
-    .filter(([, v]) => v)
-    .map(([k]) => k);
-
-  if (on.length === 0) {
-    return IMAGES[tab].before;
-  }
-
-  if (tab === "portrait") {
-    if (on.length === 1 && on[0] === "face") {
-      return `${PRISMIC}/usecase-face-enhancer-after.webp`;
-    }
-    if (on.length === 1 && on[0] === "color") {
-      return `${PRISMIC}/usecase-color-fixer-after.webp`;
-    }
-  }
-
-  if (tab === "landscape") {
-    if (on.length === 1 && on[0] === "color") {
-      return `${PRISMIC}/usecase-color-fixer-after.webp`;
-    }
-  }
-
-  return IMAGES[tab].after;
-}
 
 const industries = [
   {
@@ -114,43 +131,43 @@ const solutions = [
     title: "Unblur & Sharpener",
     desc: "Fix blurry photos instantly in a single tap.",
     to: "/unblur-sharpener",
-    imageBefore: `${PRISMIC}/usecase-unblur-before.webp`,
-    imageAfter: `${PRISMIC}/usecase-unblur-after.webp`,
+    imageBefore: `${CDN}/landscape/background=false-color=false.webp`,
+    imageAfter: `${CDN}/landscape/background=true-color=true.webp`,
   },
   {
     title: "Old Photo Restorer",
     desc: "Breathe new life into faded, scratched vintage photos.",
     to: "/photo-restorer",
-    imageBefore: `${PRISMIC}/usecase-photo-restorer-before.webp`,
-    imageAfter: `${PRISMIC}/usecase-photo-restorer-after.webp`,
+    imageBefore: `${CDN}/old-photo/face=false-glow=false-background=false.webp`,
+    imageAfter: `${CDN}/old-photo/face=true-glow=true-background=true.webp`,
   },
   {
     title: "Denoiser",
     desc: "Remove noise and grain for studio-clean results.",
     to: "/denoiser",
-    imageBefore: `${PRISMIC}/usecase-denoiser-before.webp`,
-    imageAfter: `${PRISMIC}/usecase-denoiser-after.webp`,
+    imageBefore: `${CDN}/landscape/background=false-color=false.webp`,
+    imageAfter: `${CDN}/landscape/background=false-color=true.webp`,
   },
   {
     title: "Face Enhancer",
     desc: "Sharpen facial features and restore natural skin textures.",
     to: "/face-enhancer",
-    imageBefore: `${PRISMIC}/usecase-face-enhancer-before.webp`,
-    imageAfter: `${PRISMIC}/usecase-face-enhancer-after.webp`,
+    imageBefore: `${CDN}/portrait/face=false-glow=false-color=false.webp`,
+    imageAfter: `${CDN}/portrait/face=true-glow=false-color=false.webp`,
   },
   {
     title: "Color Fixer",
     desc: "Restore vivid, accurate colors in any photo.",
     to: "/color-fixer",
-    imageBefore: `${PRISMIC}/usecase-color-fixer-before.webp`,
-    imageAfter: `${PRISMIC}/usecase-color-fixer-after.webp`,
+    imageBefore: `${CDN}/portrait/face=false-glow=false-color=false.webp`,
+    imageAfter: `${CDN}/portrait/face=false-glow=false-color=true.webp`,
   },
   {
     title: "Image Enlarger",
     desc: "Upscale your images up to 8× without losing quality.",
     to: "/image-enlarger",
-    imageBefore: `${PRISMIC}/usecase-image-enlarger-before.webp`,
-    imageAfter: `${PRISMIC}/usecase-image-enlarger-after.webp`,
+    imageBefore: `${CDN}/portrait/face=false-glow=false-color=false.webp`,
+    imageAfter: `${CDN}/portrait/face=true-glow=true-color=true.webp`,
   },
 ];
 
@@ -162,20 +179,35 @@ const stats = [
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<TabKey>("portrait");
-  const [enabledFeatures, setEnabledFeatures] = useState<
-    Record<string, boolean>
-  >({
-    face: true,
-    glow: false,
-    color: true,
-    bg: false,
-  });
+  const [enabledFeatures, setEnabledFeatures] = useState<Features>(
+    getDefaultEnabled("portrait"),
+  );
 
-  const toggleFeature = (id: string) => {
-    setEnabledFeatures((prev) => ({ ...prev, [id]: !prev[id] }));
+  const handleTabChange = (tab: TabKey) => {
+    setActiveTab(tab);
+    setEnabledFeatures(getDefaultEnabled(tab));
   };
 
-  const computedAfter = getAfterImage(activeTab, enabledFeatures);
+  const toggleFeature = (id: keyof Features) => {
+    setEnabledFeatures((prev) => {
+      const next = { ...prev };
+      // Unchecking face also unchecks glow; checking glow also checks face
+      if (id === "face" && prev.face) {
+        next.face = false;
+        next.glow = false;
+      } else if (id === "glow" && !prev.glow) {
+        next.glow = true;
+        next.face = true;
+      } else {
+        next[id] = !prev[id];
+      }
+      return next;
+    });
+  };
+
+  const cfg = TAB_CONFIG[activeTab];
+  const beforeUrl = cfg.buildUrl(ALL_FALSE);
+  const afterUrl = cfg.buildUrl(enabledFeatures);
 
   return (
     <div className="min-h-screen bg-black">
@@ -198,7 +230,7 @@ export default function HomePage() {
               <DownloadButtons variant="white" />
             </FadeUp>
 
-            {/* Right */}
+            {/* Right – Product Demo */}
             <FadeUp delay={0.15}>
               {/* Tabs with thumbnails */}
               <div className="flex gap-2 mb-4">
@@ -206,7 +238,7 @@ export default function HomePage() {
                   <button
                     type="button"
                     key={t.key}
-                    onClick={() => setActiveTab(t.key)}
+                    onClick={() => handleTabChange(t.key)}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                       activeTab === t.key
                         ? "bg-[#FF3A5C] text-white shadow-md"
@@ -215,12 +247,9 @@ export default function HomePage() {
                     data-ocid="hero.tab"
                   >
                     <img
-                      src={IMAGES[t.key].thumb}
+                      src={TAB_CONFIG[t.key].thumb}
                       alt={t.label}
                       className="w-5 h-5 rounded-sm object-cover flex-shrink-0"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = "none";
-                      }}
                     />
                     {t.label}
                   </button>
@@ -229,7 +258,7 @@ export default function HomePage() {
 
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeTab + computedAfter}
+                  key={activeTab + afterUrl}
                   initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}
@@ -237,9 +266,9 @@ export default function HomePage() {
                 >
                   <div className="bg-[#111111] rounded-2xl p-4 shadow-2xl border border-white/10">
                     <BeforeAfterSlider
-                      imageBefore={IMAGES[activeTab].before}
-                      imageAfter={computedAfter}
-                      label={activeTab}
+                      imageBefore={beforeUrl}
+                      imageAfter={afterUrl}
+                      label={cfg.label}
                     />
                   </div>
                 </motion.div>
@@ -247,12 +276,17 @@ export default function HomePage() {
 
               <div className="grid grid-cols-2 gap-3 mt-4">
                 {heroFeatures.map((f) => {
-                  const isDisabled = f.id === "bg" && activeTab === "portrait";
+                  const isDisabled = cfg.disabled.includes(f.id);
                   return (
-                    <div
+                    <button
+                      type="button"
                       key={f.id}
-                      className={`flex items-center justify-between bg-[#111111] border border-white/10 rounded-xl p-3 ${
-                        isDisabled ? "opacity-40" : ""
+                      disabled={isDisabled}
+                      onClick={() => toggleFeature(f.id)}
+                      className={`flex items-center justify-between w-full text-left bg-[#111111] border border-white/10 rounded-xl p-3 transition-colors ${
+                        isDisabled
+                          ? "opacity-40 cursor-not-allowed"
+                          : "cursor-pointer hover:border-white/25"
                       }`}
                     >
                       <div className="flex-1 min-w-0 mr-3">
@@ -269,7 +303,7 @@ export default function HomePage() {
                         }
                         onChange={() => !isDisabled && toggleFeature(f.id)}
                       />
-                    </div>
+                    </button>
                   );
                 })}
               </div>
@@ -323,13 +357,9 @@ export default function HomePage() {
             <FadeUp delay={0.15}>
               <div className="rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-2xl">
                 <img
-                  src={`${PRISMIC}/homepage-ai-photos.webp`}
+                  src="/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png"
                   alt="AI Photos - ClearPix"
                   className="w-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      "/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png";
-                  }}
                 />
               </div>
             </FadeUp>
@@ -374,13 +404,9 @@ export default function HomePage() {
             <FadeUp>
               <div className="rounded-3xl overflow-hidden border border-white/10 bg-[#0a0a0a] shadow-2xl">
                 <img
-                  src={`${PRISMIC}/homepage-video-enhancer.webp`}
+                  src="/assets/uploads/image-019d2418-09cb-7229-b192-20ad7171ad55-5.png"
                   alt="Video Enhancer - ClearPix"
                   className="w-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      "/assets/uploads/image-019d2418-09cb-7229-b192-20ad7171ad55-5.png";
-                  }}
                 />
               </div>
             </FadeUp>

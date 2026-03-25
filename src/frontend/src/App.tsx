@@ -11,6 +11,7 @@ import AIPhotosPage from "./pages/AIPhotosPage";
 import DownloadPage from "./pages/DownloadPage";
 import { FeaturePage } from "./pages/FeaturePage";
 import HomePage from "./pages/HomePage";
+import VideoEnhancerPage from "./pages/VideoEnhancerPage";
 
 const PRISMIC = "https://remini.ai/images/prismic";
 const LOCAL = "/assets/generated/";
@@ -272,36 +273,6 @@ const featureData: Record<
       },
     ],
   },
-  "video-enhancer": {
-    name: "Video Enhancer",
-    headline: "Enhance and enlarge your videos",
-    body: "Our AI video enhancer upscales, denoises, and sharpens your videos frame-by-frame for stunning HD and 4K results.",
-    imageBefore: `${LOCAL}unblur-before.dim_400x300.jpg`,
-    imageAfter: `${LOCAL}video-enhancer-showcase.dim_800x600.jpg`,
-    sections: [
-      {
-        tagline: "Video AI",
-        heading: "Frame-by-frame AI enhancement",
-        body: "Unlike simple filters, our AI analyzes and enhances every single frame of your video for consistent, cinematic quality.",
-        image: `${LOCAL}video-enhancer-showcase.dim_800x600.jpg`,
-        imageRight: true,
-      },
-      {
-        tagline: "Upscaling",
-        heading: "SD to HD, HD to 4K",
-        body: "Take any low-resolution video and upscale it to crisp, high-definition quality without visible artifacts or blurring.",
-        image: `${LOCAL}landscape-after.dim_600x400.jpg`,
-        imageRight: false,
-      },
-      {
-        tagline: "Fast processing",
-        heading: "Quick results without compromise",
-        body: "Our optimized AI pipeline processes your video quickly — so you spend less time waiting and more time sharing.",
-        image: `${PRISMIC}/usecase-denoiser-after.webp`,
-        imageRight: true,
-      },
-    ],
-  },
 };
 
 function Layout() {
@@ -335,6 +306,12 @@ const downloadRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/download",
   component: DownloadPage,
+});
+
+const videoEnhancerRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/video-enhancer",
+  component: VideoEnhancerPage,
 });
 
 function makeFeatureRoute(path: string, key: string) {
@@ -372,15 +349,12 @@ const lowQualityEnhancerRoute = makeFeatureRoute(
   "/low-quality-enhancer",
   "low-quality-enhancer",
 );
-const videoEnhancerRoute = makeFeatureRoute(
-  "/video-enhancer",
-  "video-enhancer",
-);
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
   aiPhotosRoute,
   downloadRoute,
+  videoEnhancerRoute,
   unblurRoute,
   denoiserRoute,
   photoRestorerRoute,
@@ -389,7 +363,6 @@ const routeTree = rootRoute.addChildren([
   faceEnhancerRoute,
   backgroundEnhancerRoute,
   lowQualityEnhancerRoute,
-  videoEnhancerRoute,
 ]);
 
 export const router = createRouter({ routeTree });

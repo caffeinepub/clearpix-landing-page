@@ -122,7 +122,7 @@ export function FeaturePage({
               Enhance photos at scale with just a few lines of code.
             </p>
             <img
-              src="https://remini.ai/images/prismic/api-integrations.webp"
+              src="/assets/generated/api-integrations.dim_800x400.webp"
               alt="API integrations"
               className="w-full max-w-2xl mx-auto rounded-3xl shadow-2xl mb-8"
             />
