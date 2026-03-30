@@ -1,0 +1,39 @@
+{
+  "name": "ClearPix – AI Photo Enhancer",
+  "short_name": "ClearPix",
+  "description": "Enhance, unblur, upscale & restore photos instantly with AI. Free on iOS & Android.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FF3A5C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/uploads/app_logo_foreground-019d2426-c686-71cf-adab-6b85833910d7-1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/uploads/app_logo_foreground-019d2426-c686-71cf-adab-6b85833910d7-1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["photo", "utilities", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.clearpix.photoenhancer.app",
+      "id": "com.clearpix.photoenhancer.app"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/us/app/clearpix-ai-photo-enhancer/id6755960455"
+    }
+  ],
+  "prefer_related_applications": true
+}

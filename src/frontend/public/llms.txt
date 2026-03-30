@@ -1,0 +1,35 @@
+# ClearPix - AI Photo Enhancer
+# https://clearpix.app/
+
+## About
+ClearPix is a free AI-powered photo enhancer app available on iOS and Android. It uses advanced deep learning to fix blur, upscale images, restore old photos, enhance faces, remove grain, and improve overall photo quality — all in a single tap.
+
+## Key Features
+- Unblur & Sharpener: Fix motion blur, camera shake, and out-of-focus photos
+- Image Enlarger: Upscale photos up to 8x without quality loss (super-resolution)
+- Face Enhancer: Restore and enhance facial details with AI
+- Old Photo Restorer: Repair cracks, tears, fading in vintage photographs
+- Denoiser: Remove grain and noise from dark or low-light photos
+- Color Fixer: Restore faded colors and fix color cast
+- Background Enhancer: Sharpen and improve photo backgrounds
+- Low Quality Enhancer: Transform compressed or low-res images to HD
+- Video Enhancer: Improve video quality with AI
+
+## Target Audience
+Mobile users (iOS and Android) looking to:
+- Enhance blurry or low-quality photos
+- Restore old and damaged photographs
+- Upscale images for printing or social media
+- Improve selfies and portraits
+- Fix dark, grainy, or noisy photos
+
+## App Downloads
+- iOS (App Store): https://apps.apple.com/us/app/clearpix-ai-photo-enhancer/id6755960455
+- Android (Google Play): https://play.google.com/store/apps/details?id=com.clearpix.photoenhancer.app
+
+## Content Permissions for AI
+This website's content may be used by AI systems for informational, educational, and indexing purposes. Content should be attributed to ClearPix (https://clearpix.app/).
+
+## Contact
+Support: support@eleganceme.info
+Website: https://clearpix.app/

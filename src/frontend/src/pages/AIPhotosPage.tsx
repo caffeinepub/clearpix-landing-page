@@ -107,7 +107,7 @@ export default function AIPhotosPage() {
               <img
                 src="/assets/uploads/image-019d2418-09cb-73c2-8ee9-cfd64ac9db20-4.png"
                 alt="Enhance Every Snap - ClearPix AI"
-                className="w-full object-contain"
+                className="w-full object-contain max-h-[280px]"
               />
             </div>
           </FadeUp>
@@ -131,7 +131,7 @@ export default function AIPhotosPage() {
                 <img
                   src="/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png"
                   alt="Easy AI Profile Setup"
-                  className="w-full object-contain max-h-[360px]"
+                  className="w-full object-contain max-h-[280px]"
                 />
                 <div className="p-6">
                   <h3 className="font-display font-bold text-white text-xl mb-2">
@@ -149,7 +149,7 @@ export default function AIPhotosPage() {
                 <img
                   src="/assets/uploads/image-019d2418-0950-718a-9630-ab82df232ea6-3.png"
                   alt="AI Magic Filters"
-                  className="w-full object-contain"
+                  className="w-full object-contain max-h-[280px]"
                 />
                 <div className="p-6">
                   <h3 className="font-display font-bold text-white text-xl mb-2">
@@ -200,7 +200,7 @@ export default function AIPhotosPage() {
                         <img
                           src={step.image}
                           alt={step.title}
-                          className={`w-full ${step.isUpload ? "object-contain" : "object-cover"}`}
+                          className={`w-full ${step.isUpload ? "object-contain max-h-[280px]" : "object-cover"}`}
                         />
                       </div>
                     </>
@@ -212,7 +212,7 @@ export default function AIPhotosPage() {
                         <img
                           src={step.image}
                           alt={step.title}
-                          className={`w-full ${step.isUpload ? "object-contain" : "object-cover"}`}
+                          className={`w-full ${step.isUpload ? "object-contain max-h-[280px]" : "object-cover"}`}
                         />
                       </div>
                       <div>
@@ -293,7 +293,7 @@ export default function AIPhotosPage() {
               <img
                 src="/assets/uploads/image-019d2418-0910-71e1-bfa9-3e8de204494f-2.png"
                 alt="Modeling Shoots & Portraits - ClearPix mobile app"
-                className="w-full object-contain"
+                className="w-full object-contain max-h-[280px]"
               />
             </div>
           </FadeUp>

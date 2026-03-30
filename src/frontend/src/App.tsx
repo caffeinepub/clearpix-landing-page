@@ -8,7 +8,9 @@ import {
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import AIPhotosPage from "./pages/AIPhotosPage";
+import BlogArticlePage from "./pages/BlogArticlePage";
 import BlogPage from "./pages/BlogPage";
+import ContactPage from "./pages/ContactPage";
 import CookiePolicyPage from "./pages/CookiePolicyPage";
 import DownloadPage from "./pages/DownloadPage";
 import { FeaturePage } from "./pages/FeaturePage";
@@ -324,6 +326,12 @@ const blogRoute = createRoute({
   component: BlogPage,
 });
 
+const blogArticleRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/blog/$slug",
+  component: BlogArticlePage,
+});
+
 const privacyPolicyRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/privacy-policy",
@@ -340,6 +348,12 @@ const cookiePolicyRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/cookie-policy",
   component: CookiePolicyPage,
+});
+
+const contactRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/contact",
+  component: ContactPage,
 });
 
 function makeFeatureRoute(path: string, key: string) {
@@ -384,9 +398,11 @@ const routeTree = rootRoute.addChildren([
   downloadRoute,
   videoEnhancerRoute,
   blogRoute,
+  blogArticleRoute,
   privacyPolicyRoute,
   termsOfServiceRoute,
   cookiePolicyRoute,
+  contactRoute,
   unblurRoute,
   denoiserRoute,
   photoRestorerRoute,

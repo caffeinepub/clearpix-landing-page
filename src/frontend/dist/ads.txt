@@ -1,0 +1,10 @@
+# ads.txt for ClearPix - https://clearpix.app/
+# This file declares authorized digital sellers for ClearPix advertising inventory.
+# Learn more: https://iabtechlab.com/ads-txt/
+#
+# Format: <Domain>, <Publisher/Seller-ID>, <Account-Type>, <TAGID>
+#
+# ClearPix does not currently authorize any third-party ad networks.
+# This file is present to prevent domain spoofing and unauthorized ad sales.
+# 
+# placeholder - no authorized sellers

@@ -290,13 +290,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-black">
       <SEOHead
-        title="ClearPix \u2013 AI Photo Enhancer App"
+        title="ClearPix – AI Photo Enhancer App"
         description="ClearPix uses AI to enhance photos, fix blur, upscale images & restore old photos in one tap. Loved by 20K+ users. Free on iOS & Android."
         canonical="https://clearpix.app/"
         schema={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "ClearPix \u2013 AI Photo Enhancer",
+          name: "ClearPix – AI Photo Enhancer",
           description:
             "Free AI photo enhancer app for iOS and Android. Fix blur, upscale images, restore old photos and enhance faces in one tap.",
         }}
@@ -327,7 +327,7 @@ export default function HomePage() {
               <div className="flex items-center gap-6 mt-6">
                 <div className="flex items-center gap-2">
                   <span className="text-[#FF3A5C] font-bold text-sm">
-                    4.8 \u2605
+                    4.8 ★
                   </span>
                   <span className="text-gray-500 text-xs">
                     App Store Rating
@@ -344,7 +344,7 @@ export default function HomePage() {
               </div>
             </FadeUp>
 
-            {/* Right \u2013 Product Demo */}
+            {/* Right – Product Demo */}
             <FadeUp delay={0.15}>
               <div className="flex gap-2 mb-4">
                 {heroTabs.map((t) => (
@@ -480,7 +480,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeUp>
               <p className="text-[11px] font-bold tracking-widest uppercase text-gray-500 mb-4">
-                New \u00b7 AI Photos
+                New · AI Photos
               </p>
               <h2 className="font-display font-extrabold text-white text-4xl sm:text-5xl tracking-tight mb-6 leading-[1.1]">
                 Generate Stunning AI Portraits of Yourself

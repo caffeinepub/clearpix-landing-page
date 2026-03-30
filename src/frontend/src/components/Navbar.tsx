@@ -128,12 +128,13 @@ export function Navbar() {
           >
             Blog
           </Link>
-          <a
-            href="mailto:support@clearpix.app"
-            className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+          <Link
+            to={"/contact" as any}
+            className={`text-sm font-medium transition-colors ${pathname === "/contact" ? "text-white" : "text-gray-400 hover:text-white"}`}
+            data-ocid="nav.link"
           >
             Support
-          </a>
+          </Link>
         </nav>
 
         {/* CTA */}
@@ -213,12 +214,13 @@ export function Navbar() {
               >
                 Blog
               </Link>
-              <a
-                href="mailto:support@clearpix.app"
+              <Link
+                to={"/contact" as any}
                 className="block py-2.5 text-sm font-medium text-white"
+                data-ocid="nav.link"
               >
                 Support
-              </a>
+              </Link>
               <Link
                 to="/download"
                 className="flex items-center justify-center gap-2 bg-[#FF3A5C] text-white text-sm font-semibold px-5 py-3 rounded-full w-full mt-3"
