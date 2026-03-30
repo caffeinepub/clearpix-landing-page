@@ -15,6 +15,12 @@ const enhanceLinks = [
   { label: "Video Enhancer", to: "/video-enhancer" },
 ];
 
+const legalLinks = [
+  { label: "Privacy Policy", to: "/privacy-policy" },
+  { label: "Terms of Service", to: "/terms-of-service" },
+  { label: "Cookie Policy", to: "/cookie-policy" },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -85,18 +91,16 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-white text-sm mb-4">Legal</h4>
             <ul className="space-y-3">
-              {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
-                (l) => (
-                  <li key={l}>
-                    <a
-                      href="/"
-                      className="text-gray-500 text-sm hover:text-white transition-colors"
-                    >
-                      {l}
-                    </a>
-                  </li>
-                ),
-              )}
+              {legalLinks.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-gray-500 text-sm hover:text-white transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

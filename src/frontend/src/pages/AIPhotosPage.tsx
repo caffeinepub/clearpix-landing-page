@@ -131,7 +131,7 @@ export default function AIPhotosPage() {
                 <img
                   src="/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png"
                   alt="Easy AI Profile Setup"
-                  className="w-full object-contain"
+                  className="w-full object-contain max-h-[360px]"
                 />
                 <div className="p-6">
                   <h3 className="font-display font-bold text-white text-xl mb-2">

@@ -359,7 +359,7 @@ export default function HomePage() {
                 <img
                   src="/assets/uploads/image-019d2418-08fb-703b-bba7-e851a519249f-1.png"
                   alt="AI Photos - ClearPix"
-                  className="w-full object-contain"
+                  className="w-full object-contain max-h-[480px]"
                 />
               </div>
             </FadeUp>
@@ -406,7 +406,7 @@ export default function HomePage() {
                 <img
                   src="/assets/uploads/image-019d2418-09cb-7229-b192-20ad7171ad55-5.png"
                   alt="Video Enhancer - ClearPix"
-                  className="w-full object-contain"
+                  className="w-full object-contain max-h-[480px]"
                 />
               </div>
             </FadeUp>

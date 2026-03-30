@@ -8,9 +8,12 @@ import {
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import AIPhotosPage from "./pages/AIPhotosPage";
+import CookiePolicyPage from "./pages/CookiePolicyPage";
 import DownloadPage from "./pages/DownloadPage";
 import { FeaturePage } from "./pages/FeaturePage";
 import HomePage from "./pages/HomePage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsOfServicePage from "./pages/TermsOfServicePage";
 import VideoEnhancerPage from "./pages/VideoEnhancerPage";
 
 const PRISMIC = "https://remini.ai/images/prismic";
@@ -314,6 +317,24 @@ const videoEnhancerRoute = createRoute({
   component: VideoEnhancerPage,
 });
 
+const privacyPolicyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/privacy-policy",
+  component: PrivacyPolicyPage,
+});
+
+const termsOfServiceRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/terms-of-service",
+  component: TermsOfServicePage,
+});
+
+const cookiePolicyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/cookie-policy",
+  component: CookiePolicyPage,
+});
+
 function makeFeatureRoute(path: string, key: string) {
   return createRoute({
     getParentRoute: () => rootRoute,
@@ -355,6 +376,9 @@ const routeTree = rootRoute.addChildren([
   aiPhotosRoute,
   downloadRoute,
   videoEnhancerRoute,
+  privacyPolicyRoute,
+  termsOfServiceRoute,
+  cookiePolicyRoute,
   unblurRoute,
   denoiserRoute,
   photoRestorerRoute,
