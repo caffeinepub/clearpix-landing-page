@@ -61,7 +61,7 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2" data-ocid="nav.link">
+        <Link to="/" className="flex items-center gap-2">
           <img
             src={LOGO}
             alt="ClearPix Logo"
@@ -73,7 +73,10 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav
+          className="hidden md:flex items-center gap-6"
+          aria-label="Main navigation"
+        >
           <div ref={dropdownRef} className="relative">
             <button
               type="button"
@@ -83,13 +86,10 @@ export function Navbar() {
                   : "text-gray-400 hover:text-white"
               }`}
               onClick={() => setDropdownOpen((v) => !v)}
-              data-ocid="nav.toggle"
             >
               Enhance
               <ChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${
-                  dropdownOpen ? "rotate-180" : ""
-                }`}
+                className={`w-4 h-4 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
               />
             </button>
             <AnimatePresence>
@@ -107,7 +107,6 @@ export function Navbar() {
                       to={l.to}
                       className="block px-4 py-2.5 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors"
                       onClick={() => setDropdownOpen(false)}
-                      data-ocid="nav.link"
                     >
                       {l.label}
                     </Link>
@@ -119,19 +118,19 @@ export function Navbar() {
 
           <Link
             to="/ai-photos"
-            className={`text-sm font-medium transition-colors ${
-              pathname === "/ai-photos"
-                ? "text-white"
-                : "text-gray-400 hover:text-white"
-            }`}
-            data-ocid="nav.link"
+            className={`text-sm font-medium transition-colors ${pathname === "/ai-photos" ? "text-white" : "text-gray-400 hover:text-white"}`}
           >
             AI Photos
+          </Link>
+          <Link
+            to={"/blog" as any}
+            className={`text-sm font-medium transition-colors ${pathname === "/blog" ? "text-white" : "text-gray-400 hover:text-white"}`}
+          >
+            Blog
           </Link>
           <a
             href="mailto:support@clearpix.app"
             className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
-            data-ocid="nav.link"
           >
             Support
           </a>
@@ -142,7 +141,6 @@ export function Navbar() {
           <Link
             to="/download"
             className="inline-flex items-center gap-2 bg-[#FF3A5C] hover:bg-[#e02347] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-[#FF3A5C]/25"
-            data-ocid="nav.primary_button"
           >
             Download App
           </Link>
@@ -153,7 +151,6 @@ export function Navbar() {
           type="button"
           className="md:hidden p-2 text-white"
           onClick={() => setMobileOpen((v) => !v)}
-          data-ocid="nav.toggle"
           aria-label="Toggle menu"
         >
           {mobileOpen ? (
@@ -178,13 +175,10 @@ export function Navbar() {
                 type="button"
                 className="flex w-full items-center justify-between py-2.5 text-sm font-medium text-white"
                 onClick={() => setMobileEnhanceOpen((v) => !v)}
-                data-ocid="nav.toggle"
               >
                 Enhance
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform ${
-                    mobileEnhanceOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 transition-transform ${mobileEnhanceOpen ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>
@@ -200,7 +194,6 @@ export function Navbar() {
                         key={l.to}
                         to={l.to}
                         className="block py-2 text-sm text-gray-400 hover:text-white transition-colors"
-                        data-ocid="nav.link"
                       >
                         {l.label}
                       </Link>
@@ -211,21 +204,24 @@ export function Navbar() {
               <Link
                 to="/ai-photos"
                 className="block py-2.5 text-sm font-medium text-white"
-                data-ocid="nav.link"
               >
                 AI Photos
+              </Link>
+              <Link
+                to={"/blog" as any}
+                className="block py-2.5 text-sm font-medium text-white"
+              >
+                Blog
               </Link>
               <a
                 href="mailto:support@clearpix.app"
                 className="block py-2.5 text-sm font-medium text-white"
-                data-ocid="nav.link"
               >
                 Support
               </a>
               <Link
                 to="/download"
                 className="flex items-center justify-center gap-2 bg-[#FF3A5C] text-white text-sm font-semibold px-5 py-3 rounded-full w-full mt-3"
-                data-ocid="nav.primary_button"
               >
                 Download App
               </Link>

@@ -8,6 +8,7 @@ import {
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import AIPhotosPage from "./pages/AIPhotosPage";
+import BlogPage from "./pages/BlogPage";
 import CookiePolicyPage from "./pages/CookiePolicyPage";
 import DownloadPage from "./pages/DownloadPage";
 import { FeaturePage } from "./pages/FeaturePage";
@@ -317,6 +318,12 @@ const videoEnhancerRoute = createRoute({
   component: VideoEnhancerPage,
 });
 
+const blogRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/blog",
+  component: BlogPage,
+});
+
 const privacyPolicyRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/privacy-policy",
@@ -376,6 +383,7 @@ const routeTree = rootRoute.addChildren([
   aiPhotosRoute,
   downloadRoute,
   videoEnhancerRoute,
+  blogRoute,
   privacyPolicyRoute,
   termsOfServiceRoute,
   cookiePolicyRoute,

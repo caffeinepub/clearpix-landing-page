@@ -26,7 +26,7 @@ export function Footer() {
   return (
     <footer className="bg-[#0a0a0a] pt-16 pb-8 px-4 sm:px-6 lg:px-8 border-t border-white/10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -40,8 +40,8 @@ export function Footer() {
               </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
-              AI-powered photo enhancement for everyone. Restore, upscale, and
-              beautify your memories in seconds.
+              AI-powered photo enhancer for iOS &amp; Android. Restore, upscale,
+              and beautify your photos in one tap.
             </p>
           </div>
 
@@ -87,6 +87,37 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Resources */}
+          <div>
+            <h4 className="font-semibold text-white text-sm mb-4">Resources</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  to={"/blog" as any}
+                  className="text-gray-500 text-sm hover:text-white transition-colors"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/download"
+                  className="text-gray-500 text-sm hover:text-white transition-colors"
+                >
+                  Download App
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@clearpix.app"
+                  className="text-gray-500 text-sm hover:text-white transition-colors"
+                >
+                  Support
+                </a>
+              </li>
+            </ul>
+          </div>
+
           {/* Legal */}
           <div>
             <h4 className="font-semibold text-white text-sm mb-4">Legal</h4>
@@ -106,7 +137,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600">
-          <p>© {year} ClearPix. All rights reserved.</p>
+          <p>&copy; {year} ClearPix. All rights reserved.</p>
           <p>
             Built with ❤️ using{" "}
             <a
